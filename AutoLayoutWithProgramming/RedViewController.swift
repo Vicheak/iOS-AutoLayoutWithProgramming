@@ -85,18 +85,12 @@ class RedViewController: UIViewController {
             NSLayoutConstraint(item: button3, attribute: .centerY, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .centerY, multiplier: 1, constant: 0)
         ]
         
-        ipadConstraints = [
-//            NSLayoutConstraint(item: button1, attribute: .top, relatedBy: .equal, toItem: , attribute: <#T##NSLayoutConstraint.Attribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
-        ]
-        
         activateConstraints()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        guard let previousTraitCollection = previousTraitCollection else {
-            return
-        }
+        guard let previousTraitCollection = previousTraitCollection else { return }
         
         //disable
         if previousTraitCollection.verticalSizeClass == .regular &&

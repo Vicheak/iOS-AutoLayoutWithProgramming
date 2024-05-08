@@ -9,6 +9,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Item 2-->
+        <scene sceneID="IH6-F4-O22">
+            <objects>
+                <viewController id="sEn-4J-DAm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Sg-Sg-Eu5">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="oco-Ar-M1W"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="f6p-fQ-olT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zQH-f6-2Nw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-672" y="285"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Fpp-Dw-SOR">
+            <objects>
+                <viewController id="LEH-K7-Izg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C6i-ou-j8n">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dK5-XX-MUf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" image="list.bullet.clipboard" catalog="system" id="IqW-rT-eDq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qp2-lQ-hOf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-672" y="-322"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="vTm-b9-6J3">
+            <objects>
+                <tabBarController id="ue7-Kr-2uu" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="72e-ty-JEG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="LEH-K7-Izg" kind="relationship" relationship="viewControllers" id="UTF-c5-kYg"/>
+                        <segue destination="sEn-4J-DAm" kind="relationship" relationship="viewControllers" id="khN-d1-kJT"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m0y-Q3-KjL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1576" y="-18"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -48,6 +98,7 @@
     </scenes>
     <resources>
         <image name="apple.terminal" catalog="system" width="128" height="93"/>
+        <image name="list.bullet.clipboard" catalog="system" width="98" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

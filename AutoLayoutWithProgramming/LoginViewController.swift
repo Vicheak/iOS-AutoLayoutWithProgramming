@@ -11,80 +11,156 @@ class LoginViewController: UIViewController {
     
     let scrollView = UIScrollView()
     let mainView = UIView()
-    let loginLabel = UILabel()
+    let stackView = UIStackView()
+    let stackViewTextField = UIStackView()
+    let stackViewButton = UIStackView()
     let imageView = UIImageView()
     let usernameTextField = UITextField()
     let passwordTextField = UITextField()
     let loginButton = UIButton()
+    var bottomConstraint = NSLayoutConstraint()
+    let tapGestureRecognizer = UITapGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         view.addSubview(scrollView)
+        view.addGestureRecognizer(tapGestureRecognizer)
         scrollView.addSubview(mainView)
-
         mainView.backgroundColor = .white
-        mainView.addSubview(loginLabel)
-        mainView.addSubview(imageView)
-        mainView.addSubview(usernameTextField)
-        mainView.addSubview(passwordTextField)
-        mainView.addSubview(loginButton)
+        mainView.addSubview(stackView)
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(stackViewTextField)
+        stackView.addArrangedSubview(stackViewButton)
+        stackViewTextField.addArrangedSubview(usernameTextField)
+        stackViewTextField.addArrangedSubview(passwordTextField)
+        stackViewButton.addArrangedSubview(loginButton)
         
+        navigationItem.title = "Login"
+        
+        setUpConstraints()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        //subscribe to event
+        tapGestureRecognizer.addTarget(self, action: #selector(tapEndEdit))
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func showKeyboard(notification: Notification){
+        guard let size = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        bottomConstraint.constant = size.height
+        view.layoutIfNeeded()
+    }
+    
+    @objc func hideKeyboard(){
+        bottomConstraint.constant = 0
+        view.layoutIfNeeded()
+    }
+    
+    @objc func tapEndEdit(sender: UITapGestureRecognizer){
+        view.endEditing(true)
+    }
+    
+    @objc func loginButtonTapped(sender: UIButton){
+        let username = usernameTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        let viewController = UserViewController()
+        
+//        NotificationCenter.default.post(name: NSNotification.Name.login, object: [
+//            "username": username,
+//            "password": password
+//        ])
+        
+        viewController.data = [
+            "username": username,
+            "password": password
+        ]
+        
+        navigationController?.pushViewController(viewController, animated: true)
+        
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
+    func setUpConstraints(){
+        //scroll view
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        bottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0)
         scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+        bottomConstraint.isActive = true
         
+        //main view
         mainView.translatesAutoresizingMaskIntoConstraints = false
         mainView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 0).isActive = true
         mainView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 0).isActive = true
         mainView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: 0).isActive = true
         mainView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: 0).isActive = true
         mainView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, multiplier: 1, constant: 0).isActive = true
+        let mainViewHeightConstraint = mainView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor, multiplier: 1, constant: 0)
+        mainViewHeightConstraint.priority = .defaultLow
+        mainViewHeightConstraint.isActive = true
         
-        loginLabel.text = "Login"
-        loginLabel.backgroundColor = .blue
-        loginLabel.textColor = .white
-        loginLabel.textAlignment = .center
-        loginLabel.translatesAutoresizingMaskIntoConstraints = false
-        loginLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        loginLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
-        loginLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
-        loginLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        //stack view
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 20
+        stackView.contentMode = .scaleToFill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: mainView, attribute: .top, multiplier: 1, constant: 10).isActive = true
+        NSLayoutConstraint(item: stackView, attribute: .leading, relatedBy: .equal, toItem: mainView, attribute: .leading, multiplier: 1, constant: 10).isActive = true
+        NSLayoutConstraint(item: mainView, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: stackView, attribute: .bottom, multiplier: 1, constant: 10).isActive = true
+        NSLayoutConstraint(item: mainView, attribute: .trailing, relatedBy: .equal, toItem: stackView, attribute: .trailing, multiplier: 1, constant: 10).isActive = true
+        NSLayoutConstraint(item: stackView, attribute: .centerX, relatedBy: .equal, toItem: mainView, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: stackView, attribute: .centerY, relatedBy: .equal, toItem: mainView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
         
+        //image view
         imageView.image = UIImage(systemName: "apple.terminal")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 130).isActive = true
-        imageView.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 30).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
+        //stack view for text field container
+        stackViewTextField.axis = .vertical
+        stackViewTextField.alignment = .fill
+        stackViewTextField.distribution = .fill
+        stackViewTextField.spacing = 20
+        stackViewTextField.contentMode = .scaleToFill
+        
+        //username text field
         usernameTextField.borderStyle = .roundedRect
+//        usernameTextField.layer.cornerRadius = 20
         usernameTextField.placeholder = "Enter username"
-        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        usernameTextField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30).isActive = true
-        usernameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        usernameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-        
+   
+        //password text field
         passwordTextField.borderStyle = .roundedRect
+//        passwordTextField.layer.cornerRadius = 20
         passwordTextField.placeholder = "Enter password"
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20).isActive = true
-        passwordTextField.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor, constant: 0).isActive = true
-        passwordTextField.trailingAnchor.constraint(equalTo: usernameTextField.trailingAnchor, constant: 0).isActive = true
         
+        //stack view for button container
+        stackViewButton.axis = .vertical
+        stackViewButton.alignment = .fill
+        stackViewButton.distribution = .fill
+        stackViewButton.spacing = 0
+        
+        //login button
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = .blue
         loginButton.layer.cornerRadius = 10
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30).isActive = true
-        loginButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
-        loginButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
-
+        loginButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
+    
+}
+
+extension NSNotification.Name {
+    
+    static let login = NSNotification.Name.init("login")
     
 }
