@@ -13,7 +13,7 @@ class UserViewController: UIViewController {
     let welcomeLabel = UILabel()
     let usernameLabel = UILabel()
     
-    var data: [String: String] = [:]
+    var data: [String:String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
