@@ -9,6 +9,7 @@ import UIKit
 
 class CreateNoteViewController: UIViewController {
     
+    let navigationBar = UINavigationBar()
     let titleTextField = UITextField()
     let detailTextView = UITextView()
     let saveButton = UIButton()
@@ -19,6 +20,7 @@ class CreateNoteViewController: UIViewController {
         view.backgroundColor = .white
         
         navigationItem.title = "Create New Note"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.circle"), style: .plain, target: self, action: #selector(rightBarButtonTapped))
         
         setUpViews();
         
@@ -27,6 +29,12 @@ class CreateNoteViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func rightBarButtonTapped(sender: UIBarButtonItem){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(identifier: "CollectionViewController")
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc func showKeyboard(notification: Notification){
@@ -43,7 +51,17 @@ class CreateNoteViewController: UIViewController {
     func setUpViews(){
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
+        view.addSubview(navigationBar)
         
+        let navigationItem = UINavigationItem(title: "Test Navbar")
+        navigationBar.setItems([navigationItem], animated: true)
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint(item: navigationBar, attribute: .left, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .left, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: navigationBar, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: navigationBar, attribute: .right, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .right, multiplier: 1, constant: 0)
+        ]);
+
         scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         bottomConstraint = NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)

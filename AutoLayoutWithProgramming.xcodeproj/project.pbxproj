@@ -10,6 +10,9 @@
 		5251F8F32BEB200B00E3B46A /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5251F8F22BEB200B00E3B46A /* UserViewController.swift */; };
 		52B10F082BE744BE00E33BA9 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B10F072BE744BE00E33BA9 /* NoteListViewController.swift */; };
 		52BE04E42BEF5164006E7BCC /* CreateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE04E32BEF5164006E7BCC /* CreateNoteViewController.swift */; };
+		52BE04E62BEF68C8006E7BCC /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE04E52BEF68C8006E7BCC /* TestViewController.swift */; };
+		52BE04E82BEF6F42006E7BCC /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE04E72BEF6F42006E7BCC /* CollectionViewController.swift */; };
+		52BE04EC2BEF716C006E7BCC /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE04EB2BEF716C006E7BCC /* NoteCollectionViewCell.swift */; };
 		52D565682BE719A3007ADC08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D565672BE719A3007ADC08 /* AppDelegate.swift */; };
 		52D5656C2BE719A3007ADC08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5656B2BE719A3007ADC08 /* ViewController.swift */; };
 		52D5656F2BE719A3007ADC08 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 52D5656E2BE719A3007ADC08 /* Base */; };
@@ -23,6 +26,9 @@
 		5251F8F22BEB200B00E3B46A /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		52B10F072BE744BE00E33BA9 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		52BE04E32BEF5164006E7BCC /* CreateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteViewController.swift; sourceTree = "<group>"; };
+		52BE04E52BEF68C8006E7BCC /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		52BE04E72BEF6F42006E7BCC /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		52BE04EB2BEF716C006E7BCC /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		52D565642BE719A3007ADC08 /* AutoLayoutWithProgramming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLayoutWithProgramming.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D565672BE719A3007ADC08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52D5656B2BE719A3007ADC08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +81,9 @@
 				5251F8F22BEB200B00E3B46A /* UserViewController.swift */,
 				52B10F072BE744BE00E33BA9 /* NoteListViewController.swift */,
 				52BE04E32BEF5164006E7BCC /* CreateNoteViewController.swift */,
+				52BE04E52BEF68C8006E7BCC /* TestViewController.swift */,
+				52BE04E72BEF6F42006E7BCC /* CollectionViewController.swift */,
+				52BE04EB2BEF716C006E7BCC /* NoteCollectionViewCell.swift */,
 			);
 			path = AutoLayoutWithProgramming;
 			sourceTree = "<group>";
@@ -150,8 +159,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52BE04E82BEF6F42006E7BCC /* CollectionViewController.swift in Sources */,
 				52D5657E2BE72F9E007ADC08 /* LoginViewController.swift in Sources */,
+				52BE04EC2BEF716C006E7BCC /* NoteCollectionViewCell.swift in Sources */,
 				5251F8F32BEB200B00E3B46A /* UserViewController.swift in Sources */,
+				52BE04E62BEF68C8006E7BCC /* TestViewController.swift in Sources */,
 				52D5656C2BE719A3007ADC08 /* ViewController.swift in Sources */,
 				52D5657C2BE71A52007ADC08 /* RedViewController.swift in Sources */,
 				52B10F082BE744BE00E33BA9 /* NoteListViewController.swift in Sources */,

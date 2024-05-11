@@ -28,8 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navController = UINavigationController(rootViewController: CreateNoteViewController())
         navController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 0);
         
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let collectionNavViewController = storyBoard.instantiateViewController(withIdentifier: "CollectionNavigationController")
+        collectionNavViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
+        
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [navController]
+        tabBarController.viewControllers = [navController, collectionNavViewController]
         tabBarController.selectedViewController = navController
         
         window?.rootViewController = tabBarController
