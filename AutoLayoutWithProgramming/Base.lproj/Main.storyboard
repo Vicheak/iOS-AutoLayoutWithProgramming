@@ -73,7 +73,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TfZ-cR-Ds1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow.clockwise.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TfZ-cR-Ds1">
                                 <rect key="frame" x="76" y="132" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -108,27 +108,27 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gCU-2j-AV0">
-                                    <size key="itemSize" width="74" height="62"/>
+                                    <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="843-QD-ZaO" customClass="NoteCollectionViewCell" customModule="AutoLayoutWithProgramming" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="74" height="62"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OnX-dQ-UXe">
-                                            <rect key="frame" x="0.0" y="0.0" width="74" height="62"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vXD-cW-Vwv">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjv-b2-ItS">
-                                                    <rect key="frame" x="5" y="5" width="64" height="21"/>
+                                                    <rect key="frame" x="5" y="10" width="60" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oO-sk-e3W">
-                                                    <rect key="frame" x="5" y="36" width="64" height="21"/>
+                                                    <rect key="frame" x="5" y="41" width="60" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -136,15 +136,15 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1oO-sk-e3W" firstAttribute="top" secondItem="sjv-b2-ItS" secondAttribute="bottom" constant="10" id="1uV-EX-mGM"/>
-                                                <constraint firstItem="sjv-b2-ItS" firstAttribute="top" secondItem="OnX-dQ-UXe" secondAttribute="top" constant="5" id="Eoa-mY-YpW"/>
+                                                <constraint firstItem="sjv-b2-ItS" firstAttribute="top" secondItem="vXD-cW-Vwv" secondAttribute="top" constant="10" id="Eoa-mY-YpW"/>
                                                 <constraint firstAttribute="trailing" secondItem="sjv-b2-ItS" secondAttribute="trailing" constant="5" id="LuC-BP-uWx"/>
                                                 <constraint firstAttribute="bottom" secondItem="1oO-sk-e3W" secondAttribute="bottom" constant="5" id="Qcx-bf-4p9"/>
-                                                <constraint firstItem="sjv-b2-ItS" firstAttribute="leading" secondItem="OnX-dQ-UXe" secondAttribute="leading" constant="5" id="UHG-I4-R98"/>
-                                                <constraint firstItem="1oO-sk-e3W" firstAttribute="leading" secondItem="OnX-dQ-UXe" secondAttribute="leading" constant="5" id="fYo-mI-iuW"/>
+                                                <constraint firstItem="sjv-b2-ItS" firstAttribute="leading" secondItem="vXD-cW-Vwv" secondAttribute="leading" constant="5" id="UHG-I4-R98"/>
+                                                <constraint firstItem="1oO-sk-e3W" firstAttribute="leading" secondItem="vXD-cW-Vwv" secondAttribute="leading" constant="5" id="fYo-mI-iuW"/>
                                                 <constraint firstAttribute="trailing" secondItem="1oO-sk-e3W" secondAttribute="trailing" constant="5" id="gEv-C1-TYX"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="74" height="62"/>
+                                        <size key="customSize" width="70" height="70"/>
                                         <connections>
                                             <outlet property="detailLabel" destination="1oO-sk-e3W" id="EbO-2B-c9R"/>
                                             <outlet property="titleLabel" destination="sjv-b2-ItS" id="9Vy-hN-kcC"/>
@@ -303,13 +303,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
         <image name="list.bullet.clipboard" catalog="system" width="98" height="128"/>
-        <image name="plus.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

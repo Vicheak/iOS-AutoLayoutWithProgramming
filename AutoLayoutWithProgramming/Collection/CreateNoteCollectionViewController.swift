@@ -1,13 +1,13 @@
 //
-//  CreateNoteViewController.swift
+//  CreateNoteCollectionViewController.swift
 //  AutoLayoutWithProgramming
 //
-//  Created by @suonvicheakdev on 11/5/24.
+//  Created by @suonvicheakdev on 12/5/24.
 //
 
 import UIKit
 
-class CreateNoteViewController: UIViewController {
+class CreateNoteCollectionViewController: UIViewController {
     
     let navigationBar = UINavigationBar()
     let titleTextField = UITextField()
@@ -15,12 +15,11 @@ class CreateNoteViewController: UIViewController {
     let saveButton = UIButton()
     var bottomConstraint: NSLayoutConstraint!
     
+    var note: Note?
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         view.backgroundColor = .white
-        
-        navigationItem.title = "Create New Note"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.circle"), style: .plain, target: self, action: #selector(rightBarButtonTapped))
         
         setUpViews();
         
@@ -29,12 +28,14 @@ class CreateNoteViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func rightBarButtonTapped(sender: UIBarButtonItem){
-        let storyBoard = UIStoryboard(name: "Collection", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(identifier: "NotesCollectionViewController")
-        navigationController?.pushViewController(viewController, animated: true)
+        
+        if note == nil {
+            navigationItem.title = "Create New Note"
+        } else {
+            navigationItem.title = "Edit Note"
+            titleTextField.text = note?.title
+            detailTextView.text = note?.detail
+        }
     }
     
     @objc func showKeyboard(notification: Notification){
@@ -51,17 +52,7 @@ class CreateNoteViewController: UIViewController {
     func setUpViews(){
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        view.addSubview(navigationBar)
-        
-        let navigationItem = UINavigationItem(title: "Test Navbar")
-        navigationBar.setItems([navigationItem], animated: true)
-        navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: navigationBar, attribute: .left, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .left, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: navigationBar, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: navigationBar, attribute: .right, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .right, multiplier: 1, constant: 0)
-        ]);
-
+    
         scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         bottomConstraint = NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
@@ -128,11 +119,19 @@ class CreateNoteViewController: UIViewController {
             NSLayoutConstraint(item: saveButton, attribute: .bottom, relatedBy: .equal, toItem: mainView, attribute: .bottom , multiplier: 1, constant: -20),
             NSLayoutConstraint(item: saveButton, attribute: .centerX, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .centerX, multiplier: 1, constant: 0)
         ])
+        saveButton.addTarget(self, action: #selector(saveData), for: .touchUpInside)
         
         let tapGuesture = UITapGestureRecognizer()
         mainView.addGestureRecognizer(tapGuesture)
         
         tapGuesture.addTarget(self, action: #selector(viewEndEdit))
+    }
+    
+    @objc func saveData(sender: UIButton){
+        let title = titleTextField.text ?? ""
+        let detail = detailTextView.text ?? ""
+        NotificationCenter.default.post(name: NSNotification.Name.saveData, object: Note(title: title, detail: detail))
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func viewEndEdit(sender: UITapGestureRecognizer){
@@ -141,7 +140,7 @@ class CreateNoteViewController: UIViewController {
     
 }
 
-extension CreateNoteViewController: UITextFieldDelegate, UITextViewDelegate {
+extension CreateNoteCollectionViewController: UITextFieldDelegate, UITextViewDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == titleTextField {
@@ -162,5 +161,11 @@ extension CreateNoteViewController: UITextFieldDelegate, UITextViewDelegate {
             detailTextView.text = "Enter node detail"
         }
     }
+    
+}
+
+extension NSNotification.Name {
+    
+    static let saveData = NSNotification.Name.init("saveData")
     
 }

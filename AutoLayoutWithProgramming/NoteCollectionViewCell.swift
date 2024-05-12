@@ -15,7 +15,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     //used with interface builder
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        print("cell rendering")
+//        print("cell rendering")
     }
     
     //with programmatic ui
@@ -27,9 +27,14 @@ class NoteCollectionViewCell: UICollectionViewCell {
     //before reuse, can set up the properties
     override func prepareForReuse() {
         super.prepareForReuse()
-        titleLabel.text = "1"
-        detailLabel.text = "1"
-        print("reusing cell render")
+//        titleLabel.text = "1"
+//        detailLabel.text = "1"
+//        print("reusing cell render")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//        layer.cornerRadius = frame.width/2
     }
     
 }
