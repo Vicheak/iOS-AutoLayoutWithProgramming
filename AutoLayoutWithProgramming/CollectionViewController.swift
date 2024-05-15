@@ -17,8 +17,6 @@ class CollectionViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
 //        collectionView.showsVerticalScrollIndicator = false
-        
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
@@ -41,7 +39,7 @@ extension CollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! NoteCollectionViewCell
-        cell.backgroundColor = .systemOrange
+        cell.contentView.backgroundColor = .systemOrange
         if indexPath.row < 300 {
             cell.titleLabel.text = "\(indexPath.item)"
             cell.detailLabel.text = "\(indexPath.section)"
@@ -76,7 +74,7 @@ extension CollectionViewController: UICollectionViewDelegate {
                 return nil
             }
             let refreshAction = UIAction(title: "Refresh", image: UIImage(systemName: "arrow.clockwise.circle")) { (action) in
-                print("refreshAction")
+                print("refreshAction") 
             }
             let yes = UIAction(title: "Yes", image: UIImage(systemName: "checkmark.seal.fill")) { (action) in
                 print("Yes")
