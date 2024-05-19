@@ -24,7 +24,23 @@
 		52D565742BE719A5007ADC08 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 52D565732BE719A5007ADC08 /* Base */; };
 		52D5657C2BE71A52007ADC08 /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5657B2BE71A52007ADC08 /* RedViewController.swift */; };
 		52D5657E2BE72F9E007ADC08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5657D2BE72F9E007ADC08 /* LoginViewController.swift */; };
+		52F9802A2BF99F7800471DD2 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F980292BF99F7800471DD2 /* MyViewController.swift */; };
+		52F980322BF9AF5900471DD2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 52F980312BF9AF5900471DD2 /* SnapKit */; };
+		52F980392BF9B1C300471DD2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 52F980382BF9B1C300471DD2 /* Alamofire */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		52F980362BF9AFFC00471DD2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5251F8F22BEB200B00E3B46A /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +62,7 @@
 		52D565752BE719A5007ADC08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52D5657B2BE71A52007ADC08 /* RedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
 		52D5657D2BE72F9E007ADC08 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		52F980292BF99F7800471DD2 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,12 +70,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52F980322BF9AF5900471DD2 /* SnapKit in Frameworks */,
+				52F980392BF9B1C300471DD2 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C70BDFADA9836476685AD49 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		52D49D8B2BEFE3C100023606 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +101,7 @@
 			children = (
 				52D565662BE719A3007ADC08 /* AutoLayoutWithProgramming */,
 				52D565652BE719A3007ADC08 /* Products */,
+				0C70BDFADA9836476685AD49 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +116,7 @@
 		52D565662BE719A3007ADC08 /* AutoLayoutWithProgramming */ = {
 			isa = PBXGroup;
 			children = (
+				52F980282BF99EFF00471DD2 /* snapkit */,
 				52D49D8B2BEFE3C100023606 /* Collection */,
 				52D565672BE719A3007ADC08 /* AppDelegate.swift */,
 				52D5656B2BE719A3007ADC08 /* ViewController.swift */,
@@ -108,6 +136,14 @@
 			path = AutoLayoutWithProgramming;
 			sourceTree = "<group>";
 		};
+		52F980282BF99EFF00471DD2 /* snapkit */ = {
+			isa = PBXGroup;
+			children = (
+				52F980292BF99F7800471DD2 /* MyViewController.swift */,
+			);
+			path = snapkit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,12 +154,17 @@
 				52D565602BE719A3007ADC08 /* Sources */,
 				52D565612BE719A3007ADC08 /* Frameworks */,
 				52D565622BE719A3007ADC08 /* Resources */,
+				52F980362BF9AFFC00471DD2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = AutoLayoutWithProgramming;
+			packageProductDependencies = (
+				52F980312BF9AF5900471DD2 /* SnapKit */,
+				52F980382BF9B1C300471DD2 /* Alamofire */,
+			);
 			productName = AutoLayoutWithProgramming;
 			productReference = 52D565642BE719A3007ADC08 /* AutoLayoutWithProgramming.app */;
 			productType = "com.apple.product-type.application";
@@ -152,6 +193,10 @@
 				Base,
 			);
 			mainGroup = 52D5655B2BE719A3007ADC08;
+			packageReferences = (
+				52F980302BF9AF5900471DD2 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				52F980372BF9B1C300471DD2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 52D565652BE719A3007ADC08 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -190,6 +235,7 @@
 				52D49D8D2BEFE40A00023606 /* NotesCollectionViewController.swift in Sources */,
 				52D5656C2BE719A3007ADC08 /* ViewController.swift in Sources */,
 				52D5657C2BE71A52007ADC08 /* RedViewController.swift in Sources */,
+				52F9802A2BF99F7800471DD2 /* MyViewController.swift in Sources */,
 				52B10F082BE744BE00E33BA9 /* NoteListViewController.swift in Sources */,
 				52BE04E42BEF5164006E7BCC /* CreateNoteViewController.swift in Sources */,
 				52D565682BE719A3007ADC08 /* AppDelegate.swift in Sources */,
@@ -255,7 +301,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -318,7 +364,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -417,6 +463,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		52F980302BF9AF5900471DD2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		52F980372BF9B1C300471DD2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52F980312BF9AF5900471DD2 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52F980302BF9AF5900471DD2 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		52F980382BF9B1C300471DD2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52F980372BF9B1C300471DD2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 52D5655C2BE719A3007ADC08 /* Project object */;
 }

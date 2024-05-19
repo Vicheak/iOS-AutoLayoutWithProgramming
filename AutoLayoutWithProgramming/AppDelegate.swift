@@ -24,7 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        let navControllerForNoteList = UINavigationController(rootViewController: NoteListViewController())
 //        navControllerForNoteList.tabBarItem = UITabBarItem(title: "Note", image: UIImage(systemName: "list.bullet.clipboard"), tag: 0)
-        
+    
+        let firstNavigationController = UINavigationController(rootViewController: NoteListViewController())
+        firstNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+        firstNavigationController.navigationBar.prefersLargeTitles = true
+        firstNavigationController.navigationItem.largeTitleDisplayMode = .always
+  
         let navController = UINavigationController(rootViewController: CreateNoteViewController())
         navController.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 0);
         
@@ -33,11 +38,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         collectionNavViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
         
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [navController, collectionNavViewController]
-        tabBarController.selectedViewController = navController
+        tabBarController.viewControllers = [firstNavigationController, navController, collectionNavViewController]
+        tabBarController.selectedViewController = firstNavigationController
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
+        
+        let barAppearance = UINavigationBarAppearance()
+        barAppearance.configureWithDefaultBackground()
+        barAppearance.backgroundColor = .systemYellow
+        barAppearance.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ]
+        barAppearance.largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ]
+        
+        UINavigationBar.appearance().standardAppearance = barAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = barAppearance
         
         return true
     }
